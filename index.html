@@ -16,8 +16,8 @@
 
     <script type="text/javascript">
         //console.log(convertTwo("02"));
-        console.log(convertMe("1111031"));
-        console.log(convertMe("1,000"));
+        console.log(nepDigit.convertMe("100000"));
+        console.log(nepDigit.convertMe("1002"));
     </script>
 </head>
     
@@ -45,7 +45,7 @@
 			for ( var i = 0; i <= 100; i++ ) {
                 document.write("<tr class='grid_2'>")
 				document.write("<td class=''>" + i +
-					" -> " + digit_map[i] + "</td>");
+					" -> " + nepDigit.digit_map[i] + "</td>");
                 document.write("</tr>");
 			}
 
