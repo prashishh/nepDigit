@@ -6,10 +6,10 @@ var nepDigit = {
 
 // length 1 and 2 ie. 5 or 50
   convertTwo : function( number ) {
-  return nepDigit.digit_map[+number];
+    return nepDigit.digit_map[+number];
 },
 
-// length > 2
+  // length > 2
   convertMe : function( number ) {
     // remove commas
     number = number.replace(/\,/g,'');
@@ -19,20 +19,35 @@ var nepDigit = {
 
     // if length < 2, map 
     if (len == 2 || len == 1) {
-      return nepDigit.convertTwo(number);
+      return nepDigit.convertTwo(number, len);
     // else recursively break the number
     } else {
       // if remainder not equal to 0, map first two digit and recursively break the rest of the digit - pattern
       if ( len % 2 != 0 ) {
         // exception for hundredth
-        if ( len == 3 )
-          return nepDigit.convertTwo(number[0]) + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(1,len));
-        else
-          return nepDigit.convertTwo(number[0]+number[1]) + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(2,len));
+        if ( len == 3 ) {
+          var result = nepDigit.convertTwo(number[0]);
+          if (result == '')
+            return nepDigit.convertMe(number.substring(1,len));
+          else 
+            return result + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(2,len));
+        } 
+        else {
+          var result = nepDigit.convertTwo(number[0]+number[1]);
+          if (result == '')
+            return nepDigit.convertMe(number.substring(2,len));
+          else 
+            return nepDigit.convertTwo(number[0]+number[1]) + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(2,len));
+        }
       }
       // if remainder equal to 0, map first digit and recursively break the rest of the digit - pattern
       else {
-        return nepDigit.convertTwo(number[0]) + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(1,len));
+        var result = nepDigit.convertTwo(number[0]);
+        
+        if (result == '')
+          return nepDigit.convertMe(number.substring(1,len));
+        else
+          return nepDigit.convertTwo(number[0]) + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(1,len));
       }
     }
   }
@@ -40,4 +55,4 @@ var nepDigit = {
 
 
 
-	
+  
