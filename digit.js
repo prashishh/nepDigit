@@ -52,14 +52,14 @@ var nepDigit = {
           if (result == '')
             return nepDigit.convertMe(number.substring(1,len));
           else 
-            return result + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(2,len));
+            return result + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(1,len));
         } 
         else {
           var result = nepDigit.convertTwo(number[0]+number[1]);
           if (result == '')
             return nepDigit.convertMe(number.substring(2,len));
           else 
-            return nepDigit.convertTwo(number[0]+number[1]) + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(2,len));
+            return nepDigit.convertTwo(number[0]+number[1]) + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(1,len));
         }
       }
       // if remainder equal to 0, map first digit and recursively break the rest of the digit - pattern
