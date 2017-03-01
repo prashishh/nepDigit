@@ -27,7 +27,7 @@ var nepDigit = {
 			  default: //write code to throw error:)
 		  }
 	  }
-	  newInt = eval(newStr);
+    newInt = parseInt(newStr, 10);
 	  return newInt;
   },
   
