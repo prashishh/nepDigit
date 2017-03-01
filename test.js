@@ -237,13 +237,3 @@ var testCases= {
 for(var key in testCases) {
     testConvertMe(key, testCases[key]);
 }
-
-// var output = {};
-
-// for(var i=1000; i<2000;i++) {
-    // i = i.toString();
-    // output[i] = nepDigit.convertMe(""+i+"");
-// }
-
-// console.log(output);
-
