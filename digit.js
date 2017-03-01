@@ -75,6 +75,12 @@ var nepDigit = {
   }
 }
 
-
-
-  
+function testConvertMe(input, expected) {
+  var got = nepDigit.convertMe(input);
+  if( got == expected) {
+    console.log("Test: PASS");
+  } else {
+    console.log("Test: FAIL");
+    console.log("Expected: " + expected + ", Got: " + got);
+  }
+}
