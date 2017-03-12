@@ -27,7 +27,7 @@ var nepDigit = {
 			  default: //write code to throw error:)
 		  }
 	  }
-	  newInt = eval(newStr);
+    newInt = parseInt(newStr, 10);
 	  return newInt;
   },
   
@@ -41,7 +41,7 @@ var nepDigit = {
 
     // if length < 2, map 
     if (len == 2 || len == 1) {
-      return nepDigit.convertTwo(number, len);
+      return nepDigit.convertTwo(number);
     // else recursively break the number
     } else {
       // if remainder not equal to 0, map first two digit and recursively break the rest of the digit - pattern
@@ -69,12 +69,18 @@ var nepDigit = {
         if (result == '')
           return nepDigit.convertMe(number.substring(1,len));
         else
-          return nepDigit.convertTwo(number[0]) + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(1,len));
+          return result + ' ' + nepDigit.multiple_map[len-2] + ' ' + nepDigit.convertMe(number.substring(1,len));
       }
     }
   }
 }
 
-
-
-  
+function testConvertMe(input, expected) {
+  var got = nepDigit.convertMe(input);
+  if( got == expected) {
+    console.log("Test: PASS");
+  } else {
+    console.log("Test: FAIL");
+    console.log("Expected: " + expected + ", Got: " + got);
+  }
+}
